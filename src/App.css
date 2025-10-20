@@ -1,0 +1,656 @@
+/* Custom Font Declarations */
+@font-face {
+  font-family: 'My Heading Font'; /* The name you'll use in your CSS */
+  src: url('./assets/fonts/MyCoolFont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'My Body Font'; /* The name for your body font */
+  src: url('./assets/fonts/MyBodyFont.otf') format('opentype');
+}
+
+/* CSS Variables for Light Theme */
+:root {
+    --primary-color: #a35a51;
+    --secondary-color-dark: #f1f1f1; /* Lighter grey for footer */
+    --background-color: #ffffff;    /* Main white background */
+    --surface-color: #ffffff;       /* For cards, now same as bg */
+    --text-color: #333333;          /* Dark grey for text */
+    --heading-color: #111111;       /* Almost black for headings */
+    --white-color: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Lighter shadow for light theme */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* General Body Styling with Background Image */
+body {
+    font-family: 'My Body Font', sans-serif; /* Using your custom font */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
+    z-index: 1;
+
+    background-image: url('/background-light.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Semi-transparent overlay to improve text readability */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(242, 242, 242, 0.80); /* Light grey, nearly opaque */
+    z-index: -1;
+}
+
+/* Container for Centered Content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-family: 'My Heading Font', sans-serif; /* Using your custom font */
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+/* Header & Navigation */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 0;
+    background-color: transparent;
+    transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.header.scrolled {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.logo img {
+    width: 120px; 
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 50%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease-out;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+    position: relative;
+    overflow: hidden; 
+    background: none;
+}
+
+#hero .hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-content .subtitle {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.hero-title-logo {
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin: 20px 0 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Countdown Timer Styles */
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 40px 0;
+}
+
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 15px;
+  min-width: 80px;
+  text-align: center;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  backdrop-filter: blur(5px);
+}
+
+.time-value {
+  font-family: 'My Heading Font', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  line-height: 1;
+}
+
+.time-label {
+  font-family: 'My Body Font', sans-serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--text-color);
+  margin-top: 5px;
+}
+
+/* Animated CTA Button */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-family: 'My Heading Font', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 30px -10px var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px -8px var(--primary-color);
+}
+
+/* Section Styling */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* About Section */
+#about {
+     background-color: var(--surface-color);
+     box-shadow: 0 0 40px var(--shadow-color);
+}
+#about .about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+#about .about-text {
+    flex: 1;
+}
+
+#about .about-text p {
+     max-width: 600px;
+}
+
+#about .about-image {
+    flex: 1;
+    max-width: 450px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+#about .about-image img {
+    width: 100%;
+    display: block;
+}
+
+/* Speakers Section */
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.speaker-card {
+    background-color: var(--surface-color);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-color);
+    text-align: center;
+    padding: 30px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.speaker-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.speaker-photo-wrapper {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-color);
+}
+
+.speaker-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.speaker-socials {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(163, 90, 81, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.speaker-card:hover .speaker-socials {
+    opacity: 1;
+}
+
+.speaker-socials a {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.speaker-socials a:hover {
+    transform: scale(1.2);
+}
+
+.speaker-card h3 {
+    margin: 10px 0 5px;
+    font-size: 1.4rem;
+}
+
+.speaker-card p {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+/* Schedule Section */
+#schedule {
+    background-color: transparent;
+}
+
+.schedule-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    border-radius: 50px;
+    background: var(--surface-color);
+    padding: 8px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-family: 'My Heading Font', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-color);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    box-shadow: 0 5px 15px -5px var(--primary-color);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.schedule-item {
+    display: flex;
+    gap: 30px;
+    background: var(--surface-color);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    border-left: 5px solid var(--primary-color);
+}
+
+.schedule-time {
+    font-weight: 700;
+    font-family: 'My Heading Font', sans-serif;
+    color: var(--primary-color);
+    flex-basis: 150px;
+    flex-shrink: 0;
+}
+
+.schedule-details h4 {
+    margin: 0 0 5px;
+    font-size: 1.2rem;
+    color: var(--heading-color);
+}
+
+.schedule-details p {
+    margin: 0;
+    font-style: italic;
+    color: var(--text-color);
+}
+
+/* Pricing Section Styles */
+#register {
+  background: transparent;
+  color: var(--text-color);
+}
+
+#register .section-title, #register h2 {
+    color: var(--heading-color);
+}
+
+#register .section-title::after {
+    background-color: var(--primary-color);
+}
+
+#register p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    color: var(--text-color);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.pricing-card {
+  background-color: var(--surface-color);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  text-align: center;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.pricing-card h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.pass-description {
+  flex-grow: 1;
+  color: var(--text-color);
+  margin-bottom: 30px;
+}
+
+.price-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+  border-top: 1px solid #eee;
+  padding-top: 30px;
+}
+
+.price-option {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-amount {
+  font-family: 'My Heading Font', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.price-label {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.pricing-card .btn {
+  margin-top: auto;
+}
+
+/* Contact Section Styles */
+#contact {
+  background-color: transparent;
+  padding-bottom: 80px;
+}
+
+.contact-subtitle {
+  text-align: center;
+  max-width: 500px;
+  margin: -30px auto 40px;
+  color: var(--text-color);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-card {
+  background-color: var(--surface-color);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+}
+
+.contact-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.contact-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+}
+
+.contact-card p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  word-break: break-all;
+}
+
+.contact-card p a {
+  color: var(--text-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-card p a:hover {
+  color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--secondary-color-dark);
+    color: #888;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-socials {
+    margin-bottom: 20px;
+}
+
+.footer-socials a {
+    color: #555;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    #about .about-content {
+        flex-direction: column;
+    }
+    .logo img {
+        width: 90px;
+    }
+     .schedule-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .schedule-tabs {
+        flex-direction: column;
+        align-items: stretch;
+        background: none;
+        box-shadow: none;
+    }
+    .tab-btn {
+        margin-bottom: 5px;
+        background: var(--surface-color);
+    }
+     .logo img {
+        width: 70px;
+    }
+}
