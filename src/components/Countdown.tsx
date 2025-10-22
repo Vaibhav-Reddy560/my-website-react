@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; // Keep useState and useEffect
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
-    // Set the target date and time
     const difference = +new Date('2025-11-08T09:00:00') - +new Date();
     let timeLeft: { [key: string]: number } = {};
 
@@ -20,16 +19,14 @@ const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
-    // Update the timer every second
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
-
-    // Clear the timer when the component is unmounted
     return () => clearTimeout(timer);
   });
-
-  const timerComponents: JSX.Element[] = [];
+  
+  // The 'JSX.Element[]' type has been removed from here
+  const timerComponents = []; 
 
   Object.keys(timeLeft).forEach((interval) => {
     if (!timeLeft[interval] && timeLeft[interval] !== 0) {
