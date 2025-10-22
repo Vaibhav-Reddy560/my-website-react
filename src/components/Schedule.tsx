@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; // The 'React' import is required here for JSX
 
 // Define a type for our schedule items to allow for JSX in titles
 interface ScheduleItem {
@@ -12,24 +12,24 @@ interface ScheduleItem {
 const day1Schedule: ScheduleItem[] = [
   { time: '9:00 AM - 9:30 AM', title: 'Registration' },
   { time: '9:30 AM - 10:00 AM', title: 'Inauguration and Welcome address' },
-  { 
-    id: 'keynote1', 
-    time: '10:00 AM - 10:30 AM', 
-    title: <>Keynote Talk 1: <span className="quote-normal">  Technology as a Catalyst for Change – Innovating with Purpose</span></>, 
-    details: 'Dive into the world of AI Ethics with our first speaker, who will discuss the challenges and opportunities in creating responsible AI systems for a better future.' 
+  {
+    id: 'keynote1',
+    time: '10:00 AM - 10:30 AM',
+    title: <>Keynote Talk 1:{' '}<span className="quote-normal">Technology as a Catalyst for Change – Innovating with Purpose</span></>,
+    details: 'Dive into the world of AI Ethics with our first speaker, who will discuss the challenges and opportunities in creating responsible AI systems for a better future.'
   },
-  { 
-    id: 'keynote2', 
-    time: '10:30 AM - 11:00 AM', 
-    title: <>Keynote Talk 2:  <span className="quote-normal">The Role of Youth in Driving Tech-Driven Social Impact</span></>, 
-    details: 'This keynote focuses on the critical role young people play in leading tech-based initiatives that create social impact. The session highlights inspiring stories of young changemakers around the world and encourages students to recognize their potential in becoming proactive agents of change through technology.' 
+  {
+    id: 'keynote2',
+    time: '10:30 AM - 11:00 AM',
+    title: <>Keynote Talk 2:{' '}<span className="quote-normal">The Role of Youth in Driving Tech-Driven Social Impact</span></>,
+    details: 'Our second keynote focuses on leveraging blockchain technology for transparent supply chains and its impact on global social good initiatives.'
   },
   { time: '11:00 AM - 11:15 AM', title: 'Tea Break' },
-  { 
-    id: 'ideacraft', 
-    time: '11:15 AM - 12:30 PM', 
-    title: <>IdeaCraft: <span className="quote-normal">It All Starts With a ‘What If?’</span></>, 
-    details: 'An interactive workshop unlocking the creative core of innovation through Design Thinking. Attendees will reimagine real-world challenges with empathy, curiosity, and the question “What if?” Guided through structured ideation techniques, they’ll transform insights into impactful ideas, laying the foundation for tech solutions that are not only smart-but deeply human.' 
+  {
+    id: 'ideacraft',
+    time: '11:15 AM - 12:30 PM',
+    title: <>IdeaCraft:{' '}<span className="quote-normal">It All Starts With a ‘What If?’</span></>,
+    details: 'An interactive workshop where participants will learn brainstorming techniques to transform nascent ideas into actionable, tech-for-good project concepts.'
   },
   { time: '12:30 PM - 1:00 PM', title: 'Ice Breaking Session' },
   { time: '1:00 PM - 2:00 PM', title: 'Lunch and Networking Session' },
@@ -65,8 +65,8 @@ const Schedule = () => {
       <div className="schedule-item" key={`${item.time}-${index}`}>
         <div className="schedule-time">{item.time}</div>
         <div className="schedule-details">
-          <h4 
-            onClick={() => item.id && handleToggle(item.id)} 
+          <h4
+            onClick={() => item.id && handleToggle(item.id)}
             className={item.id ? 'clickable' : ''}
           >
             {item.title}
