@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // <-- The fix is adding 'React' here
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
@@ -26,7 +26,6 @@ const Countdown = () => {
     return () => clearTimeout(timer);
   });
 
-  // This is the fix: We explicitly type the array as JSX.Element[]
   const timerComponents: JSX.Element[] = [];
 
   Object.keys(timeLeft).forEach((interval) => {
