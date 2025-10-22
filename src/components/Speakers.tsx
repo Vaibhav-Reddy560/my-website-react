@@ -1,5 +1,3 @@
-import React from 'react';
-
 // In a real app, this data would come from an API
 const speakersData = [
   {
