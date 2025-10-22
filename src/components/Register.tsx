@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Register = () => {
   // --- PASTE YOUR GOOGLE FORM LINK HERE ---
   const googleFormUrl = "https://docs.google.com/forms/d/1QMjo1W9KHYHeDRXL4H240aU8zQ6rPg1kTfYgkdRJGys/viewform?edit_requested=truehttps://docs.google.com/forms/d/e/1FAIpQLScHoiQM44o4hzuqaynjwUIsanfd_j7fFI5HeTSqsD9JL5JNtw/viewform";
