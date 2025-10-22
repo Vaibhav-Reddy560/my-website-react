@@ -1,3 +1,4 @@
+import React from 'react';
 import Particles from './Particles';
 import Countdown from './Countdown';
 
@@ -27,12 +28,16 @@ const Hero = () => {
         <img src="/title_logo.png" alt="Tech For Good Summit Logo" className="hero-title-logo" data-aos="fade-up" data-aos-delay="200" />
         
         <p className="tagline" data-aos="fade-up" data-aos-delay="400">
-          <strong>“TURNING TECH INTO TOMORROW'S CHANGE”</strong>
+          <strong>Innovating for a better world. Join visionaries, developers, and leaders dedicated to leveraging technology for humanity's greatest challenges.</strong>
         </p>
         
-        <Countdown />
-
-        <a href="#register" className="btn" data-aos="fade-up" data-aos-delay="600">Register Now</a>
+        {/* --- THIS IS THE NEW BIGGER BOX --- */}
+        <div className="countdown-container" data-aos="fade-up" data-aos-delay="450">
+          <h3 className="countdown-label">Starts in</h3>
+          <Countdown />
+        </div>
+        
+        <a href="#register" className="btn" data-aos="fade-up" data-aos-delay="600">Get Ticket</a>
       </div>
     </section>
   );
