@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // <-- The fix is re-adding 'React' here
+import React, { useState } from 'react'; // This line is required
 
 // Define a type for our schedule items to allow for JSX in titles
 interface ScheduleItem {
