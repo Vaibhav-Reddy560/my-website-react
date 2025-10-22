@@ -28,7 +28,7 @@ const Hero = () => {
         <img src="/title_logo.png" alt="Tech For Good Summit Logo" className="hero-title-logo" data-aos="fade-up" data-aos-delay="200" />
         
         <p className="tagline" data-aos="fade-up" data-aos-delay="400">
-          <strong>Innovating for a better world. Join visionaries, developers, and leaders dedicated to leveraging technology for humanity's greatest challenges.</strong>
+          <strong>TURNING TECH INTO TOMORROW'S CHANGE</strong>
         </p>
         
         {/* --- THIS IS THE BIGGER BOX STRUCTURE --- */}
