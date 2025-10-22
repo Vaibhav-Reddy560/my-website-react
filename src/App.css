@@ -204,7 +204,7 @@ h1, h2, h3 {
     margin-right: auto;
 }
 
-/* --- UPDATED COUNTDOWN TIMER STYLES --- */
+/* Countdown Timer Styles */
 .countdown-container {
   background-color: rgba(255, 255, 255, 0.4);
   border-radius: 15px;
@@ -260,6 +260,7 @@ h1, h2, h3 {
   color: var(--text-color);
   margin-top: 5px;
 }
+
 
 /* Animated CTA Button */
 .btn {
@@ -320,9 +321,10 @@ section {
 #about .about-text {
     flex: 1;
 }
+
 .about-text p {
   text-align: justify;
-  font-size: 1.1rem; /* Slightly larger than the default */
+  font-size: 1.1rem; 
 }
 
 #about .about-text p {
@@ -511,19 +513,16 @@ section {
   transition: max-height 0.4s ease-out, padding-top 0.4s ease-out;
 }
 
-/* This is a trick to animate the opening of the dropdown */
 .schedule-item .schedule-details .open + .dropdown-content,
 .dropdown-content:has(p) {
     max-height: 200px; /* Adjust if your text is very long */
     padding-top: 10px;
 }
 
-/* We need to re-add this has() polyfill for some browsers */
 .schedule-details h4:has(+ .dropdown-content) {
     /* Styles for the h4 if it HAS a dropdown */
 }
 
-/* Adjust the paragraph style inside the dropdown */
 .dropdown-content p {
   font-size: 0.95rem;
   color: #555;
@@ -532,6 +531,7 @@ section {
   text-align: left;
   line-height: 1.5;
 }
+
 
 /* Pricing Section Styles */
 #register {
