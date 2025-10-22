@@ -1,4 +1,3 @@
-import React from 'react';
 import LocationMap from './LocationMap'; // Import the new map component
 
 const Footer = () => {
