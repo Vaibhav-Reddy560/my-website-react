@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // <-- The fix is adding 'React' here
+import React, { useState, useEffect } from 'react'; // This line is required
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
