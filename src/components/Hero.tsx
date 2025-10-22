@@ -31,7 +31,7 @@ const Hero = () => {
           <strong>Innovating for a better world. Join visionaries, developers, and leaders dedicated to leveraging technology for humanity's greatest challenges.</strong>
         </p>
         
-        {/* --- THIS IS THE NEW BIGGER BOX --- */}
+        {/* --- THIS IS THE BIGGER BOX STRUCTURE --- */}
         <div className="countdown-container" data-aos="fade-up" data-aos-delay="450">
           <h3 className="countdown-label">Starts in</h3>
           <Countdown />
