@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'; // Keep useState and useEffect
+import { useState, useEffect } from 'react';
 
 const Countdown = () => {
   const calculateTimeLeft = () => {
@@ -22,11 +22,12 @@ const Countdown = () => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
+
     return () => clearTimeout(timer);
   });
-  
-  // The 'JSX.Element[]' type has been removed from here
-  const timerComponents = []; 
+
+  // This is the fix: We explicitly type the array as JSX.Element[]
+  const timerComponents: JSX.Element[] = [];
 
   Object.keys(timeLeft).forEach((interval) => {
     if (!timeLeft[interval] && timeLeft[interval] !== 0) {
