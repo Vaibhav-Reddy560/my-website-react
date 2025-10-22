@@ -205,30 +205,11 @@ h1, h2, h3 {
 }
 
 /* Countdown Timer Styles */
-.countdown-container {
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 15px;
-  padding: 25px 20px;
-  margin: 40px auto;
-  max-width: 500px;
-  box-shadow: 0 4px 20px var(--shadow-color);
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-}
-
-.countdown-label {
-  font-family: 'Special Title Font', sans-serif;
-  font-size: 1.8rem;
-  color: var(--heading-color);
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
 .countdown-timer {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin: 0;
+  gap: 20px;
+  margin: 40px 0;
 }
 
 .time-block {
@@ -236,13 +217,13 @@ h1, h2, h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  padding: 0;
-  min-width: 75px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  padding: 15px;
+  min-width: 80px;
   text-align: center;
-  border-radius: 0;
-  box-shadow: none;
-  backdrop-filter: none;
+  box-shadow: 0 4px 15px var(--shadow-color);
+  backdrop-filter: blur(5px);
 }
 
 .time-value {
@@ -494,6 +475,17 @@ section {
     color: var(--text-color);
 }
 
+.schedule-details h4.clickable {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.schedule-details h4.clickable:hover {
+  color: var(--primary-color);
+}
 .quote-normal {
   font-weight: 400; /* 400 is the normal font weight */
 }
@@ -691,21 +683,6 @@ footer {
     text-align: center;
 }
 
-.footer-socials {
-    margin-bottom: 20px;
-}
-
-.footer-socials a {
-    color: #555;
-    font-size: 1.5rem;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.footer-socials a:hover {
-    color: var(--primary-color);
-}
-
 .footer-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -724,6 +701,22 @@ footer {
 .footer-info p {
   color: #666;
   margin-bottom: 20px;
+}
+
+.footer-socials {
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.footer-socials a {
+    color: #555;
+    font-size: 1.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+    color: var(--primary-color);
 }
 
 .copyright {
