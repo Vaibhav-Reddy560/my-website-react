@@ -1,8 +1,86 @@
 import React, { useState } from 'react';
 
+// Define a type for our schedule items to allow for JSX in titles
+interface ScheduleItem {
+  id?: string;
+  time: string;
+  title: string | JSX.Element;
+  details?: string;
+}
+
+// --- Schedule Data ---
+const day1Schedule: ScheduleItem[] = [
+  { time: '9:00 AM - 9:30 AM', title: 'Registration' },
+  { time: '9:30 AM - 10:00 AM', title: 'Inauguration and Welcome address' },
+  { 
+    id: 'keynote1', 
+    time: '10:00 AM - 10:30 AM', 
+    title: <>Keynote Talk 1: <span className="quote-normal">  Technology as a Catalyst for Change – Innovating with Purpose</span></>, 
+    details: 'Dive into the world of AI Ethics with our first speaker, who will discuss the challenges and opportunities in creating responsible AI systems for a better future.' 
+  },
+  { 
+    id: 'keynote2', 
+    time: '10:30 AM - 11:00 AM', 
+    title: <>Keynote Talk 2:  <span className="quote-normal">The Role of Youth in Driving Tech-Driven Social Impact</span></>, 
+    details: 'This keynote focuses on the critical role young people play in leading tech-based initiatives that create social impact. The session highlights inspiring stories of young changemakers around the world and encourages students to recognize their potential in becoming proactive agents of change through technology.' 
+  },
+  { time: '11:00 AM - 11:15 AM', title: 'Tea Break' },
+  { 
+    id: 'ideacraft', 
+    time: '11:15 AM - 12:30 PM', 
+    title: <>IdeaCraft: <span className="quote-normal">It All Starts With a ‘What If?’</span></>, 
+    details: 'An interactive workshop unlocking the creative core of innovation through Design Thinking. Attendees will reimagine real-world challenges with empathy, curiosity, and the question “What if?” Guided through structured ideation techniques, they’ll transform insights into impactful ideas, laying the foundation for tech solutions that are not only smart-but deeply human.' 
+  },
+  { time: '12:30 PM - 1:00 PM', title: 'Ice Breaking Session' },
+  { time: '1:00 PM - 2:00 PM', title: 'Lunch and Networking Session' },
+  { id: 'panel', time: '2:00 PM - 3:00 PM', title: 'Panel Discussion', details: 'Industry leaders discuss the role of corporate social responsibility in the tech sector and how companies can drive meaningful change.' },
+  { id: 'benefits', time: '3:00 PM - 3:30 PM', title: 'Benefits of IEEE membership', details: 'Discover the vast array of resources, networking opportunities, and career development tools available to all IEEE members.' },
+  { time: '3:30 PM - 4:00 PM', title: 'Closing Remarks' },
+  { time: '4:00 PM - 4:30 PM', title: 'Tea Break' },
+  { id: 'hackathon', time: '5:00 PM - 6:00 PM', title: 'Inauguration and Commencement of Hackathon', details: 'The 24-hour hackathon officially begins! Participants will form teams, receive their problem statements, and start building innovative solutions for a better world.' },
+  { time: '7:30 PM - 8:30 PM', title: 'Dinner' },
+];
+
+const day2Schedule: ScheduleItem[] = [
+    { time: '5:00 AM', title: 'Round 1 Submissions' },
+    { time: '6:00 AM - 8:00 AM', title: 'First Round Evaluation' },
+    { time: '8:00 AM - 9:00 AM', title: 'Breakfast' },
+    { time: '9:00 AM', title: 'Announcement of Round 1 Results' },
+    { time: '1:00 PM - 2:00 PM', title: 'Lunch' },
+    { time: '4:00 PM - 5:00 PM', title: 'Final Round Presentations' },
+    { time: '5:00 PM - 6:00 PM', title: 'Results and Closing Ceremony' },
+];
+
+
 const Schedule = () => {
-  // 'day1' is the default active tab
   const [activeTab, setActiveTab] = useState('day1');
+  const [openItemId, setOpenItemId] = useState<string | null>(null);
+
+  const handleToggle = (id: string) => {
+    setOpenItemId(openItemId === id ? null : id);
+  };
+
+  const renderSchedule = (scheduleData: ScheduleItem[]) => {
+    return scheduleData.map((item, index) => (
+      <div className="schedule-item" key={`${item.time}-${index}`}>
+        <div className="schedule-time">{item.time}</div>
+        <div className="schedule-details">
+          <h4 
+            onClick={() => item.id && handleToggle(item.id)} 
+            className={item.id ? 'clickable' : ''}
+          >
+            {item.title}
+            {item.id && <i className={`fas fa-chevron-down toggle-icon ${openItemId === item.id ? 'open' : ''}`}></i>}
+          </h4>
+          {item.id && openItemId === item.id && (
+            <div className="dropdown-content">
+              <p>{item.details}</p>
+            </div>
+          )}
+        </div>
+      </div>
+    ));
+  };
 
   return (
     <section id="schedule">
@@ -23,33 +101,11 @@ const Schedule = () => {
           </button>
         </div>
 
-        {/* Day 1 Content */}
         <div id="day1" className={`tab-content ${activeTab === 'day1' ? 'active' : ''}`} data-aos="fade-up" data-aos-delay="300">
-          <div className="schedule-item"><div className="schedule-time">9:00 AM - 9:30 AM</div><div className="schedule-details"><h4>Registration</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">9:30 AM - 10:00 AM</div><div className="schedule-details"><h4>Inauguration and Welcome address</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">10:00 AM - 10:30 AM</div><div className="schedule-details"><h4>Keynote Talk 1</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">10:30 AM - 11:00 AM</div><div className="schedule-details"><h4>Keynote Talk 2</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">11:00 AM - 11:15 AM</div><div className="schedule-details"><h4>Tea Break</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">11:15 AM - 12:30 PM</div><div className="schedule-details"><h4>IdeaCraft: It All Starts With a ‘What If?’</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">12:30 PM - 1:00 PM</div><div className="schedule-details"><h4>Ice Breaking Session</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">1:00 PM - 2:00 PM</div><div className="schedule-details"><h4>Lunch and Networking Session</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">2:00 PM - 3:00 PM</div><div className="schedule-details"><h4>Panel Discussion</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">3:00 PM - 3:30 PM</div><div className="schedule-details"><h4>Benefits of IEEE membership</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">3:30 PM - 4:00 PM</div><div className="schedule-details"><h4>Closing Remarks</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">4:00 PM - 4:30 PM</div><div className="schedule-details"><h4>Tea Break</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">5:00 PM - 6:00 PM</div><div className="schedule-details"><h4>Inauguration and Commencement of Hackathon</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">7:30 PM - 8:30 PM</div><div className="schedule-details"><h4>Dinner</h4></div></div>
+          {renderSchedule(day1Schedule)}
         </div>
-
-        {/* Day 2 Content */}
         <div id="day2" className={`tab-content ${activeTab === 'day2' ? 'active' : ''}`} data-aos="fade-up" data-aos-delay="300">
-          <div className="schedule-item"><div className="schedule-time">5:00 AM</div><div className="schedule-details"><h4>Round 1 Submissions</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">6:00 AM - 8:00 AM</div><div className="schedule-details"><h4>First Round Evaluation</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">8:00 AM - 9:00 AM</div><div className="schedule-details"><h4>Breakfast</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">9:00 AM</div><div className="schedule-details"><h4>Announcement of Round 1 Results</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">1:00 PM - 2:00 PM</div><div className="schedule-details"><h4>Lunch</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">4:00 PM - 5:00 PM</div><div className="schedule-details"><h4>Final Round Presentations</h4></div></div>
-          <div className="schedule-item"><div className="schedule-time">5:00 PM - 6:00 PM</div><div className="schedule-details"><h4>Results and Closing Ceremony</h4></div></div>
+          {renderSchedule(day2Schedule)}
         </div>
       </div>
     </section>

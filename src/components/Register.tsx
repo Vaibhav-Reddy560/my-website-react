@@ -1,6 +1,9 @@
 import React from 'react';
 
 const Register = () => {
+  // --- PASTE YOUR GOOGLE FORM LINK HERE ---
+  const googleFormUrl = "https://docs.google.com/forms/d/1QMjo1W9KHYHeDRXL4H240aU8zQ6rPg1kTfYgkdRJGys/viewform?edit_requested=truehttps://docs.google.com/forms/d/e/1FAIpQLScHoiQM44o4hzuqaynjwUIsanfd_j7fFI5HeTSqsD9JL5JNtw/viewform";
+
   return (
     <section id="register">
       <div className="container">
@@ -21,7 +24,15 @@ const Register = () => {
                 <span className="price-label">Non-IEEE Member</span>
               </div>
             </div>
-            <a href="#" className="btn">Get Ticket</a>
+            {/* --- UPDATED LINK --- */}
+            <a 
+              href={googleFormUrl} 
+              className="btn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Get Ticket
+            </a>
           </div>
 
           {/* Hackathon Pass Card */}
@@ -38,7 +49,15 @@ const Register = () => {
                 <span className="price-label">Non-IEEE Member</span>
               </div>
             </div>
-            <a href="#" className="btn">Get Ticket</a>
+            {/* --- UPDATED LINK --- */}
+            <a 
+              href={googleFormUrl} 
+              className="btn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Get Ticket
+            </a>
           </div>
 
           {/* Full Access Pass Card */}
@@ -55,7 +74,15 @@ const Register = () => {
                 <span className="price-label">Non-IEEE Member</span>
               </div>
             </div>
-            <a href="#" className="btn">Get Ticket</a>
+            {/* --- UPDATED LINK --- */}
+            <a 
+              href={googleFormUrl} 
+              className="btn" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Get Ticket
+            </a>
           </div>
           
         </div>
