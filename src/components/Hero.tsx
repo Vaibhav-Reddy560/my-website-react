@@ -19,7 +19,7 @@ const Hero = () => {
 
       <div className="hero-content">
         <p className="subtitle" data-aos="fade-up">
-          <span className="text-black">BMSCE IEEE COMPUTER SOCIETY</span>
+          <span className="text-black">BMSCE IEE COMPUTER SOCIETY</span>
           <span className="text-accent"> IN COLLABORATION WITH </span>
           <span className="text-black">IEEE WIE BANGALORE SECTION</span>
           <span className="text-accent"> PRESENTS</span>
